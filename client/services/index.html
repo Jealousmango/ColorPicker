@@ -1,0 +1,45 @@
+<html ng-app='myApp'>
+
+<head>
+  <title>Learning Filter</title>
+  <script src='../../bower_components/angular/angular.js'></script>
+  <script type='text/javascript' src="../../crayola.json">
+  </script>
+  <script>
+  var myApp = angular.module('myApp', []);
+  myApp.controller('colorsController', ['$scope', function ($scope){
+    $scope.colors = colors;
+
+  }])
+  </script>
+</head>
+<body>
+    <div ng-controller='colorsController'>
+      Search Colors: <input type="text" ng-model="search">
+      <table>
+        <tr>
+          <th>
+            Color Name
+          </th>
+          <th>
+            HEX
+          </th>
+          <th>
+            RGB
+          </th>
+        </tr>
+        <tr ng-repeat='color in colors | filter:search' style="background-color: {{color.hex}};">
+          <td>
+            {{color.name}}
+          </td>
+          <td>
+            {{color.hex}}
+          </td>
+          <td>
+            {{color.rgb}}
+          </td>
+        </tr>
+      </table>
+    </div>
+</body>
+</html>
